@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: url('img/bg.jpg');
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #b84617;
+}
+
+:focus {
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0) inset !important;
+}
+
+input:-internal-autofill-selected {
+	background-color: transparent;
+}
+
+.wrapper {
+    width: 700px;
+    max-width: 700px;
+    margin: auto;
+    position: relative;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.wrapper:first-child {
+    margin-top: 150px;
+}
+
+.wrapper input {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    padding: 6px 20px;
+    font-size: 1rem;
+    background: transparent;
+}
+
+input + button img {
+    height: 35px;
+}
+
+input + button {
+    border: none;
+    background: none;
+    display: block;
+    width: 40px;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    transition: all 50ms ease-in;
+}
+
+input + button:hover {
+    margin-top: -4px;
+    transition: all 100ms ease-in;
+}
+
+#resultTabs {
+    height: 70px;
+}
+
+.results {
+    padding: 0 20px;
+
+}
+
+#resultTabs button {
+    background: none;
+    border: none;
+    height: 100%;
+    font-size: 1rem;
+    color: #888;
+    text-transform: capitalize;
+    padding: 6px 15px;
+    cursor: pointer;
+}
+
+#resultTabs button:hover {
+    color: #b84617;
+}
+
+.card {
+    padding: 20px;
+    display: flex;
+    font-size: 14px;
+    border-bottom: 1px solid #aaa;
+}
+
+.card > div {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.card .poster {
+    width: 160px;
+    display: flex;
+    justify-content: center;
+}
+
+.card .details {
+    width: calc(100% - 160px);
+    font-family: Arial;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card .poster img {
+    height: 180px !important;
+}
+
+.card .title {
+    font-size: 1.4rem;
+    margin-block-end: 5px;
+    margin-block-start: -10px;
+}
+
+.card .subtitle {
+    color: #777;
+    text-transform: capitalize;
+}
+
+.card .type {
+    margin-right: 5px;
+}
+
+.card .description {
+    margin-top: 25px;
+    color: #777;
+}
+
+@media only screen and (max-width: 767px) {
+	.wrapper {
+	    max-width: 90%;
+	}
+
+	#resultTabs {
+	    text-align: center;
+	}
+
+	.card {
+	    flex-direction: column;
+	    align-items: center;
+	}
+
+	.card .poster, .card .details {
+	    width: 100%;
+	}
+
+	.card .title {
+	    margin-top: 20px;
+	}
+}
