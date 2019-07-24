@@ -73,12 +73,63 @@ console.clear();
         });
     }
 
+    function createTab(tabName) {
+        const tab = $(`<button class="tab-button">${tabName}</button>`);
+
+        // if (tabName === "all") {
+        //     tab.addClass("active");
+        // }
+
+        tab.click(function(event) {
+            $(".tab-button").removeClass("active");
+            event.target.classList.add("active");
+            $(".card").each(function() {
+                const el = $(this);
+                if (tabName === "all") {
+                    el.show();
+                } else if (el.data().type !== tabName) {
+                    el.hide();
+                } else {
+                    el.show();
+                }
+            });
+        });
+
+        return tab;
+    }
+
+    function addToDom() {
+        $("#result").append(cardList);
+    }
+
     function sortBy(key, arr) {
         return [...arr].sort(function(a, b) {
             var aName = a[key].toLowerCase();
             var bName = b[key].toLowerCase();
             return aName < bName ? -1 : aName > bName ? 1 : 0;
         });
+    }
+
+    function createSortButton(buttonName, arr, sortAsc) {
+        const button = $(`<button class="` + (sortAsc == true ? "sortAsc" : "sortDesc") + `">${buttonName}</button>`);
+
+        button.click(function() {
+            const activeTab = $('button.tab-button.active').text();
+            if (activeTab !== "all") {
+                let arrFiltered = arr.filter(function(el) {
+                    return el.Type == activeTab;
+                });
+
+                console.log('arr=' + arr);
+                console.log('result=' + arrFiltered);
+                buildResultsSection(sortAsc == true ? arrFiltered : [...arrFiltered].reverse());
+            } else {
+                buildResultsSection(sortAsc == true ? arr : [...arr].reverse());
+
+            }
+        });
+
+        return button;
     }
 
     function buildResultsSection(data) {
@@ -106,57 +157,6 @@ console.clear();
         addToDom();
     }
 
-    function createSortButton(buttonName, arr, sortAsc) {
-        // const sortDirection = (sortAsc == true ? "sortAsc" : "sortDesc");
-        const button = $(`<button class="` + (sortAsc == true ? "sortAsc" : "sortDesc") + `">${buttonName}</button>`);
-
-        button.click(function() {
-            const activeTab = $('button.tab-button.active').text();
-            console.log('activetab: ' + activeTab);
-            if (activeTab !== "all") {
-                let arrFiltered = arr.filter(function(el) {
-                    return el.Type == activeTab;
-                });
-
-                console.log('arr=' + arr);
-                console.log('result=' + arrFiltered);
-                buildResultsSection(sortAsc == true ? arrFiltered : [...arrFiltered].reverse());
-            } else {
-                buildResultsSection(sortAsc == true ? arr : [...arr].reverse());
-
-            }
-        });
-
-        return button;
-    }
-
-    function createTab(tabName) {
-        const tab = $(`<button class="tab-button">${tabName}</button>`);
-        if (tabName === "all") {
-            tab.addClass("active");
-        }
-        tab.click(function(event) {
-            $(".tab-button").removeClass("active");
-            event.target.classList.add("active");
-            $(".card").each(function() {
-                const el = $(this);
-                if (tabName === "all") {
-                    el.show();
-                } else if (el.data().type !== tabName) {
-                    el.hide();
-                } else {
-                    el.show();
-                }
-            });
-        });
-
-        return tab;
-    }
-
-    function addToDom() {
-        $("#result").append(cardList);
-    }
-
     function buildList(data) {
         data.forEach(function(obj) {
             tabs[obj.Type] = true;
@@ -169,7 +169,7 @@ console.clear();
         const imgUrl =
             info.Poster == "N/A" ?
             "https://via.placeholder.com/125x180" :
-            info.Poster.replace("http:", "https:");
+            info.Poster.replace("http:", "https:"); // we make sure the url is with https to reduce errors
         const poster = $('<div class="poster"></div>').append(
             `<img src="${imgUrl}" alt="${info.Title}">`
         );

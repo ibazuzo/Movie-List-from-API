@@ -2,26 +2,31 @@
 <html>
 
 <head>
-  <title>Movie Info</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="https://kit.fontawesome.com/ea8755a9e8.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Movie Info</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://kit.fontawesome.com/ea8755a9e8.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
-  <div class="wrapper">
-    <form action="" id="searchForm">
-      <input value="matrix" type="text" placeholder="Search for movie" id="searchInput">
-      <button type="submit" id="searchButton"><img src="img/search.svg"></button>
-    </form>
-  </div>
-  <div id="resultsWrapper" class="wrapper">
-  </div>
-  <div class="copyright">by icrainbow</div>
-  <script src="script.js"></script>
+    <div class="wrapper">
+        <a href="javascript:void(0)" class="btn-info" onclick="document.getElementById('info').classList.toggle('show');"><i class="fas fa-info-circle"></i> Informatii despre proiect</a>
+        <form action="" id="searchForm">
+            <input value="matrix" type="text" placeholder="Search for movie" id="searchInput">
+            <button type="submit" id="searchButton"><img src="img/search.svg"></button>
+        </form>
+    </div>
+    <div id="info" class="wrapper">
+        <p>Se introduce termenul dorit in campul de cautare. Trimiterea se poate face apasand tasta Enter sau prin click pe lupa din partea dreapta.</p>
+        <p>In urma request-urilor la API-ul OMDB se vor afisa rezultatele care contin termenul cautat, in ordinea din API. Pentru sortare se poate folosi sistemul de taburi si butoanele de sortare.</p>
+        <p>API-ul folosit: OMDB - <a href="http://www.omdbapi.com/" target="_blank">omdbapi.com</a></p>
+    </div>
+    <div id="resultsWrapper" class="wrapper">
+    </div>
+    <div class="copyright">by Iulian Vasilescu</div>
+    <script src="script.js"></script>
 </body>
 
 </html>

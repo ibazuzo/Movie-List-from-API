@@ -1,9 +1,3 @@
-http://www.omdbapi.com/?i=tt3896198&apikey=6ba62b70
+Movie List from API
 
-[x] sortare dupa an si nume
-
-[] paginatie
-
-[] sa se selecteze tabul curent
-
-[x] mesaj Nu s-au gasit termenii cautati
+![Movie-List-from-API](https://ibazuzo.github.io/Movie-List-from-API/)
